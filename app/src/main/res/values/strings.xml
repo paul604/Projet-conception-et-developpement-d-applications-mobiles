@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Projet</string>
+    <string name="app_name" translatable="false">Search it</string>
     <string name="action_settings">Settings</string>
 </resources>
