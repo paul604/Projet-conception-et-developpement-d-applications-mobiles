@@ -1,8 +1,20 @@
 package iut.projet;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class ActiviteListeFilm extends AppCompatActivity {
 
@@ -29,5 +41,30 @@ public class ActiviteListeFilm extends AppCompatActivity {
         }
 
         Toast.makeText(ActiviteListeFilm.this, choix +" "+ nb, Toast.LENGTH_SHORT).show();
+
+        //HTTP
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest stringRequest =
+                new StringRequest(
+                        Request.Method.GET,
+                        "https://api.themoviedb.org/3/search/movie",
+                        new Response.Listener<String>() {
+                            public void onResponse(String response) {
+
+                            }},
+                        new Response.ErrorListener() {
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("VOLLEY", error.getMessage());
+                            }}
+                )
+                {
+                    protected Map<String,String> getParams(){
+                        Map<String,String> params = new HashMap<>();
+                        params.put("language", Locale.getDefault().toString().replace("_","-"));
+                        params.put("query", "");
+                        return params;
+                    }
+                };
+        queue.add(stringRequest);
     }
 }
