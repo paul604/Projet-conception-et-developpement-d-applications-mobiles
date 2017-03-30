@@ -1,5 +1,6 @@
 package iut.projet;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -61,8 +62,11 @@ public class ActiviteListeFilm extends AppCompatActivity {
                                 lp.add(new Film());
                                 lp.add(new Film());
                                 lp.add(new Film());
-                                ListView lv = (ListView) findViewById(R.id.ListView1);
-                                lv.setAdapter(new FilmAdapteur(this, lp));
+
+                                ListView lv = (ListView) findViewById(R.id.LinearLayout1);
+
+                                assert lv != null;
+                                lv.setAdapter(new FilmAdapteur(ActiviteListeFilm.this, lp));
                             }},
                         new Response.ErrorListener() {
                             public void onErrorResponse(VolleyError error) {
