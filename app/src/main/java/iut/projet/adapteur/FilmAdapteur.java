@@ -26,22 +26,25 @@ public class FilmAdapteur extends ArrayAdapter<Film> {
         View row=convertView;
         ViewHolder viewHolder;
         if (row ==null) {
-            LayoutInflater inflater= context.getLayoutInflater();
+//            LayoutInflater inflater= context.getLayoutInflater();
+            Activity context = (Activity) getContext();
+            LayoutInflater inflater = context.getLayoutInflater();
             row=inflater.inflate(R.layout.layout_activite_liste_film, null);
             viewHolder = new ViewHolder();
             viewHolder.nom = (TextView) row.findViewById(R.id.nom);
+            viewHolder.desc = (TextView) row.findViewById(R.id.desc);
             row.setTag(viewHolder);
         }
         else {
             viewHolder = (ViewHolder)row.getTag();
         }
         viewHolder.nom.setText(getItem(position).getNom());
-        viewHolder.naissance.setText(getItem(position).getNaiss());
+        viewHolder.desc.setText(getItem(position).getNaiss());
         return(row);
     }
 
     static class ViewHolder {
         public TextView nom;
-        public TextView naissance;
+        public TextView desc;
     }
 }
