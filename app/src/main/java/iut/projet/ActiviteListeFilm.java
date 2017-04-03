@@ -31,7 +31,7 @@ public class ActiviteListeFilm extends AppCompatActivity {
         setContentView(R.layout.layout_activite_liste_film);
 
         //get Vall
-        String choix;
+        final String choix;
         int nb;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -78,7 +78,7 @@ public class ActiviteListeFilm extends AppCompatActivity {
                         Map<String,String> params = new HashMap<>();
                         params.put("api_key", "a719a84bea8cbaa79d9e9934832b24d3");
                         params.put("language", Locale.getDefault().toString().replace("_","-"));
-                        params.put("query", "");
+                        params.put("query", choix);
                         return params;
                     }
                 };
