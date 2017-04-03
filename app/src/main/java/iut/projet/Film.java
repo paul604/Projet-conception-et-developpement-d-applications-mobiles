@@ -5,14 +5,19 @@ package iut.projet;
  */
 public class Film {
 
-    private String nom;
-    private String naiss;
+    private String title;
+    private String desc;
 
-    public String getNom() {
-        return nom;
+    public Film(String title, String desc){
+        this.title=title;
+        this.desc=desc;
+    }
+
+    public String gettitle() {
+        return title;
     }
 
     public String getNaiss() {
-        return naiss;
+        return desc;
     }
 }

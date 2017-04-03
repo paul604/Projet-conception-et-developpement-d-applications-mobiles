@@ -9,6 +9,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
+      <root url="jar:///usr/local/bin/android-sdk/Sdk/extras/android/m2repository/com/android/support/recyclerview-v7/23.4.0/recyclerview-v7-23.4.0-sources.jar!/" />
       <root url="jar:///usr/local/bin/android-sdk-24.4.1/Sdk/extras/android/m2repository/com/android/support/recyclerview-v7/23.4.0/recyclerview-v7-23.4.0-sources.jar!/" />
     </SOURCES>
   </library>
