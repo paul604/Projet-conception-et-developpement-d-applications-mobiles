@@ -8,8 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,25 +23,38 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //setSpiner
+        final Spinner spinner = (Spinner) findViewById(R.id.spinnerNbrMax);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.nbMax, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        assert spinner != null;
+        spinner.setAdapter(adapter);
+
+        //event
         Button button = (Button) findViewById(R.id.submit);
         assert button != null;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
 
                 //get txt du choix
                 EditText txtChoix = (EditText) findViewById(R.id.txtChoix);
                 assert txtChoix != null;
                 String choix = txtChoix.getText().toString();
+                if(choix.equalsIgnoreCase("")){
+                    return;
+                }
 
                 //get nb voulu
-//                ... spinnerNbMax = findViewById(R.id.spinnerNbMax);
+                Spinner spinnerNbMax = (Spinner)findViewById(R.id.spinnerNbrMax);
+                assert spinnerNbMax != null;
+                String nbS = (String) spinnerNbMax.getItemAtPosition(spinnerNbMax.getSelectedItemPosition());
+                Integer nb = Integer.parseInt(nbS);
 
                 Intent i = new Intent(MainActivity.this,ActiviteListeFilm.class);
                 i.putExtra("choix",choix);
-                i.putExtra("nb", 10);
+                i.putExtra("nb", nb);
                 startActivity(i);
             }
         });

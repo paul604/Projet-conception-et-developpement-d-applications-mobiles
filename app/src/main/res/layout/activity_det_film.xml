@@ -30,7 +30,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/imgG"
         android:gravity="center_horizontal"
-        android:textColor="@color/text"/>
+        android:textColor="@color/text"
+        android:contentDescription="Titre : " />
 
     <TextView
         android:layout_width="wrap_content"
