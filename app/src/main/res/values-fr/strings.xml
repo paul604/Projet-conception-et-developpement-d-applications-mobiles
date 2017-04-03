@@ -2,4 +2,5 @@
 <resources>
     <string name="action_settings">Paramètre</string>
     <string name="recherche_un_film">Recherche un film!</string>
+    <string name="hint">titre film ici</string>
 </resources>

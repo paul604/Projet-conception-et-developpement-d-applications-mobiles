@@ -72,7 +72,7 @@
                     android:layout_column="0"
                     android:gravity="right"
                     android:textStyle="bold|italic"
-                    android:textColor="#e4d373" />
+                    android:textColor="@color/text" />
 
                 <Spinner
                     android:layout_width="107dp"
@@ -81,7 +81,7 @@
                     android:layout_row="0"
                     android:layout_column="1"
                     android:layout_gravity="center"
-                    android:background="#e4d373" />
+                    android:background="@color/text" />
 
                 <EditText
                     android:layout_width="217dp"
@@ -90,15 +90,15 @@
                     android:layout_row="1"
                     android:layout_column="0"
                     android:background="#100301"
-                    android:editable="true"
                     android:gravity="bottom"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold|italic"
-                    android:textColor="#e4d373"
-                    android:text="mettre ici texte"
+                    android:textColor="@color/text"
                     android:textAlignment="center"
                     android:singleLine="false"
-                    android:paddingBottom="15dp" />
+                    android:paddingBottom="15dp"
+                    android:hint="@string/hint"
+                    android:textColorHint="@color/textHint"/>
 
                 <Button
                     android:layout_width="112dp"
@@ -110,7 +110,7 @@
                     android:background="#100301"
                     android:layout_gravity="top|center_horizontal"
                     android:textStyle="bold|italic"
-                    android:textColor="#e4d373"
+                    android:textColor="@color/text"
                     android:textSize="17dp" />
 
 

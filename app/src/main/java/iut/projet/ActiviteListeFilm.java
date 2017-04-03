@@ -1,9 +1,12 @@
 package iut.projet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -61,28 +64,37 @@ public class ActiviteListeFilm extends AppCompatActivity {
                             public void onResponse(String response) {
                                 try {
 
-                                    ArrayList<Film> lp = new ArrayList<>();
-//                                lp.add(new Film("1", "d1"));
-//                                lp.add(new Film("2", "d2"));
-//                                lp.add(new Film("3", "d3"));
+                                    final ArrayList<Film> lp = new ArrayList<>();
 
                                     JSONObject json = new JSONObject(response);
                                     JSONArray array = json.getJSONArray("results");
-                                    for (int i = 0; i<array.length(); i++) {
+                                    for (int i = 0; i<array.length() && i<nb; i++) {
                                         JSONObject film = array.getJSONObject(i);
-                                        lp.add(new Film(film.getString("title"), film.getString("overview")));
+                                        String desc = film.getString("overview");
+                                        if(desc.equals("")){
+                                            desc="NC";
+                                        }
+                                        lp.add(new Film(film.getInt("id"),film.getString("title"), desc, film.getString("poster_path")));
                                     }
 
                                     ListView lv = (ListView) findViewById(R.id.ListView1);
-                                    assert lv != null;
-                                    lv.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
 
+                                    assert lv != null;
+
+
+                                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                            Film film = lp.get(i);
+
+                                            Intent intent = new Intent(ActiviteListeFilm.this,ActivityDetFilm.class);
+                                            intent.putExtra("id",film.getId());
+                                            intent.putExtra("img",film.getPoster_path());
+                                            startActivity(intent);
                                         }
                                     });
 
-                                    assert lv != null;
                                     lv.setAdapter(new FilmAdapteur(ActiviteListeFilm.this, lp));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -93,7 +105,7 @@ public class ActiviteListeFilm extends AppCompatActivity {
                                 Log.e("VOLLEY", error.getMessage());
                             }}
                 );
-        Log.d("http", stringRequest.getUrl());
+        System.out.println(stringRequest.getUrl());
         queue.add(stringRequest);
     }
 
@@ -109,7 +121,7 @@ public class ActiviteListeFilm extends AppCompatActivity {
                 .append("&language=")
                 .append(Locale.getDefault().toString().replace("_", "-"))
                 .append("&query=")
-                .append(choix)
+                .append(choix.replace(" ","%20"))
                 .append("&page=")
                 .append(nbFilms);
         return params.toString();

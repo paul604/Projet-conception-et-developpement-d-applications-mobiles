@@ -7,6 +7,51 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="iut.projet.ActivityDetFilm">
+    tools:context="iut.projet.ActivityDetFilm"
+    android:id="@+id/layout"
+    android:textColor="@color/text"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/imgG"
+        android:layout_width="185dp"
+        android:layout_height="278dp"
+        tools:background="#AAA"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/title"
+        android:layout_below="@+id/imgG"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/imgG"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tagline"
+        android:layout_below="@+id/title"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/title"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/overview"
+        android:layout_below="@+id/tagline"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text" />
 
 </RelativeLayout>

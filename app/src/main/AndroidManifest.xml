@@ -32,7 +32,8 @@
         <activity
             android:name=".ActiviteListeFilm"
             android:screenOrientation="portrait" />
-        <activity android:name=".ActivityDetFilm"></activity>
+        <activity android:name=".ActivityDetFilm"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
